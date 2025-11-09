@@ -24,6 +24,7 @@
     <ProjectGuid>{f39b9bf7-5485-4837-b62e-7464b6119ddf}</ProjectGuid>
     <RootNamespace>CleanArchitecture</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>CleanArchitectureCpp</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
