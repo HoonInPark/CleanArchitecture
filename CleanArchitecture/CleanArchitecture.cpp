@@ -2,11 +2,18 @@
 //
 
 #include <iostream>
+#include <functional>
 #include "DependencyInversion.h"
 
 int main()
 {
+	function<int(int, int)> DecSum =
+		[](int _InFormer, int _InLater)
+		{
+			return _InFormer + _InLater;
+		};
 
+	cout << DecSum(1, 2) << endl;
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
