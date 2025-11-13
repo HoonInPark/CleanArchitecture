@@ -45,8 +45,10 @@ private:
 class EmployeeData
 {
 public:
-    EmployeeData(int hoursWorked, int hourlyRate)
-        : m_HoursWorked(hoursWorked), m_HourlyRate(hourlyRate) {
+    EmployeeData(int _InHoursWorked, int _InHourlyRate)
+        : m_HoursWorked(_InHoursWorked)
+        , m_HourlyRate(_InHourlyRate)
+    {
     }
 
     int GetHoursWorked() const { return m_HoursWorked; }
@@ -60,19 +62,18 @@ private:
 class PayCalculator
 {
 public:
-    int CalPay(const EmployeeData& data)
+    int CalPay(const EmployeeData& _InData)
     {
-        // 단순히 시급 × 근무시간 계산
-        return data.GetHoursWorked() * data.GetHourlyRate();
+        return _InData.GetHoursWorked() * _InData.GetHourlyRate();
     }
 };
 
 class HourReporter
 {
 public:
-    void ReportHours(const EmployeeData& data)
+    int ReportHours(const EmployeeData& _InData)
     {
-        cout << "Worked Hours: " << data.GetHoursWorked() << endl;
+        return _InData.GetHourlyRate();
     }
 };
 
@@ -80,17 +81,21 @@ class EmployeeFacade
 {
 public:
     EmployeeFacade()
-        : m_PayCalculator(make_unique<PayCalculator>()),
-        m_HourReporter(make_unique<HourReporter>())
+        : m_PayCalculator(make_unique<PayCalculator>())
+        , m_HourReporter(make_unique<HourReporter>())
     {
     }
 
-    void ProcessEmployee(const EmployeeData& data)
+    int CalPay(const EmployeeData& _InData)
     {
-        // 복잡한 내부 처리를 파사드가 대신 처리
-        m_HourReporter->ReportHours(data);
-        int pay = m_PayCalculator->CalPay(data);
-        cout << "Calculated Pay: $" << pay << endl;
+        // 위임!
+        return m_PayCalculator->CalPay(_InData);
+    }
+
+    int ReportHours(const EmployeeData& _InData)
+    {
+        // 위임!
+        return m_HourReporter->ReportHours(_InData);
     }
 
 private:
@@ -98,9 +103,11 @@ private:
     unique_ptr<HourReporter> m_HourReporter;
 };
 
+/*
 int main()
 {
     EmployeeData emp(40, 25); // 40시간 근무, 시급 25달러
     EmployeeFacade facade;
     facade.ProcessEmployee(emp);
 }
+*/
