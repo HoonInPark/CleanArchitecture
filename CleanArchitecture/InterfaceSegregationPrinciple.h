@@ -1,66 +1,64 @@
 #pragma once
 
-// 거대한 OPS 클래스
-class OPS
+#include <iostream>
+
+using namespace std;
+
+class IU1Ops
 {
 public:
-    void op1()
+    virtual void op1() = 0;
+};
+
+class IU2Ops
+{
+public:
+    virtual void op2() = 0;
+};
+
+class OPS : public IU1Ops, public IU2Ops
+{
+public:
+    virtual void op1() override
     {
-        // ... 매우 큰 기능
+        cout << "op1 Called" << endl;
     }
 
-    void op2()
+    virtual void op2() override
     {
-        // ... 매우 다른 기능
+        cout << "op2 Called" << endl;
     }
 
-    void op3()
+    virtual void op3() override
     {
-        // ... 또 다른 기능
+        cout << "op3 Called" << endl;
     }
 };
 
-// User1: op1만 필요하지만 OPS 전체에 의존
-class User1 
+class User1
 {
 public:
-    User1(OPS& ops) : ops(ops) {}
+    User1(IU1Ops& ops) : ops(ops) {}
 
     void DoWork()
     {
-        ops.op1();   // 이것만 필요!
+        ops.op1();
     }
 
 private:
-    OPS& ops;
+    IU1Ops& ops;
 };
 
-// User2: op2만 필요
 class User2
 {
 public:
-    User2(OPS& ops) : ops(ops) {}
+    User2(IU2Ops& ops) : ops(ops) {}
 
     void DoWork()
     {
-        ops.op2();   // 이것만 필요!
+        ops.op2();
     }
 
 private:
-    OPS& ops;
-};
-
-// User3: op3만 필요
-class User3
-{
-public:
-    User3(OPS& ops) : ops(ops) {}
-
-    void DoWork()
-    {
-        ops.op3();  // 이것만 필요!
-    }
-
-private:
-    OPS& ops;
+    IU2Ops& ops;
 };
