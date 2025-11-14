@@ -28,11 +28,6 @@ public:
     {
         cout << "op2 Called" << endl;
     }
-
-    virtual void op3() override
-    {
-        cout << "op3 Called" << endl;
-    }
 };
 
 class User1
