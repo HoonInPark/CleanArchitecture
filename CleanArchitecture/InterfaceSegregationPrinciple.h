@@ -33,27 +33,27 @@ public:
 class User1
 {
 public:
-    User1(IU1Ops& ops) : ops(ops) {}
+    User1(IU1Ops* ops) : ops(ops) {}
 
     void DoWork()
     {
-        ops.op1();
+        ops->op1();
     }
 
 private:
-    IU1Ops& ops;
+    IU1Ops* ops;
 };
 
 class User2
 {
 public:
-    User2(IU2Ops& ops) : ops(ops) {}
+    User2(IU2Ops* ops) : ops(ops) {}
 
     void DoWork()
     {
-        ops.op2();
+        ops->op2();
     }
 
 private:
-    IU2Ops& ops;
+    IU2Ops* ops;
 };

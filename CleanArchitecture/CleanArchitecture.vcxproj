@@ -127,6 +127,7 @@
     <ClCompile Include="CleanArchitecture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractFactory.h" />
     <ClInclude Include="DependencyInversion.h" />
     <ClInclude Include="InterfaceSegregationPrinciple.h" />
     <ClInclude Include="OpenClosedPrinciple.h" />

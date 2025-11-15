@@ -3,11 +3,11 @@
 
 #include <iostream>
 #include <functional>
-#include "OpenClosedPrinciple.h"
+#include "AbstractFactory.h"
 
 int main()
-{
-
+{	
+	//auto pCurApp = new Application();
 }
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
