@@ -37,8 +37,8 @@ public:
 class Application
 {
 public:
-	Application(IFactory* _InFac)
-		: m_Factory(_InFac)
+	Application(IFactory* _pInFac)
+		: m_Factory(_pInFac)
 	{
 		m_Service = m_Factory->MakeService();
 		m_Service->Execute();
